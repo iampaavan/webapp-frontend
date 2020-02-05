@@ -1,0 +1,64 @@
+<button type="button" class="btn btn-primary btn-lg" (click)="gethello()">
+Newest Recipe
+</button>
+<div class="rounded-bottom">
+<table class="table-bordered table" >
+  <thead>
+    <tr>
+      <th scope="col">Recipe</th>
+      <th scope="col">Cuisine</th>
+      <th scope="col">Serving</th>
+      <th scope="col">Ingredients</th>
+      <th scope="col">Steps</th>
+      <th scope="col">Nutrition Information</th>
+      <th scope="col">Total Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr valign="middle">
+      <th scope="row">{{recipe.title}}</th>
+      <th scope="row">{{recipe.cuisine}}</th>
+      <th scope="row">{{recipe.servings}}</th>
+      <th scope="row">
+        <ul class="list-group" *ngFor="let item of ingredients">
+          <li class="list-group-item">{{item}}</li>
+        </ul>
+      </th>
+      <th scope="row">
+        <ol class="list-group" *ngFor="let item of steps">
+          <li class="list-group-item">{{item.position}}).  {{item.items}}</li>
+        </ol>
+      </th>
+      <th>
+        <table class="table table-responsive">
+          <tbody>
+          <tr>
+            <td>calories</td>
+            <td>{{recipe.nutrition_information['calories']}}</td>
+          </tr>
+          <tr>
+            <td>cholesterol(mg)</td>
+            <td>{{recipe.nutrition_information['cholesterol_in_mg']}}</td>
+          </tr>
+          <tr>
+            <td>sodium(mg)</td>
+            <td>{{recipe.nutrition_information['sodium_in_mg']}}</td>
+          </tr>
+          <tr>
+            <td>carbohydrates(grams)</td>
+            <td>{{recipe.nutrition_information['carbohydrates_in_grams']}}</td>
+          </tr>
+          <tr>
+            <td>protein(grams)</td>
+            <td>{{recipe.nutrition_information['protein_in_grams']}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </th>
+      <th scope="row">{{recipe.total_time_in_min}}</th>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
