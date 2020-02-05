@@ -1,15 +1,26 @@
-<button type="button" class="btn btn-primary btn-lg" (click)="gethello()">
+<div class="text-center">
+<button type="button" class="btn btn-primary btn-lg" (click)="getRecipe()">
 Newest Recipe
 </button>
-<div class="rounded-bottom">
-<table class="table-bordered table" >
+<input type="button" class="btn btn-primary btn-lg" name="name" value="Get recipe by ID" (click)="onclickbutton()">
+<div  class="hide" id="recipeid">
+  <div class="container">
+  <label style="margin: 10px">Recipe Id</label>
+  <input id="id" placeholder="Recipe ID">
+    <button type="button" class="btn btn-primary btn-sm" (click)="getRecipeById()">
+      Submit
+    </button>
+  </div>
+</div>
+</div>
+<table class="table table-bordered table text-center">
   <thead>
     <tr>
       <th scope="col">Recipe</th>
       <th scope="col">Cuisine</th>
       <th scope="col">Serving</th>
-      <th scope="col">Ingredients</th>
-      <th scope="col">Steps</th>
+      <th class="column" scope="col">Ingredients</th>
+      <th class="column" scope="col">Steps</th>
       <th scope="col">Nutrition Information</th>
       <th scope="col">Total Time</th>
     </tr>
@@ -30,7 +41,7 @@ Newest Recipe
         </ol>
       </th>
       <th>
-        <table class="table table-responsive">
+        <table class="table table-bordered">
           <tbody>
           <tr>
             <td>calories</td>
@@ -59,6 +70,4 @@ Newest Recipe
     </tr>
   </tbody>
 </table>
-</div>
-
 

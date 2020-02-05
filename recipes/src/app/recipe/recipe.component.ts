@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+// import { HttpClient } from '@angular/common/http';
+// import { map } from 'rxjs/operators';
 import { RecipeService } from '../recipe.service';
 
 
@@ -32,7 +32,20 @@ export class RecipeComponent implements OnInit {
       console.log(this.recipe)
     })
   }
-  gethello(){
+
+  onclickbutton(){
+    document.getElementById('recipeid').className="show"
     console.log("hello")
   }
+
+  getRecipeById(){
+    var id = (<HTMLInputElement>document.getElementById('id')).value
+    this.service.getRecipeById(id).subscribe(res => {
+      this.recipe = res
+      this.ingredients = this.recipe['ingredients']
+      this.steps = this.recipe['steps']
+    })
+    document.getElementById('recipeid').className='hide'
+  }
+
 }

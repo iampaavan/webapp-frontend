@@ -1,5 +1,18 @@
-.table-bordered {
+.table {
   border-radius: 5px;
-  width: 50%;
-  margin: 0px auto;
+  display: contents;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn {
+  margin: 40px;
+}
+.hide {
+  display: none;
+}
+
+.show {
+  text-align: center;
+  display: flex;
 }

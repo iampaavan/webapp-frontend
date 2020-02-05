@@ -12,4 +12,8 @@ export class RecipeService {
   getRecipe():Observable<any>{
     return this.http.get('http://localhost:8000/v1/recipes')
   }
+
+  getRecipeById(id):Observable<any>{
+    return this.http.get('http://localhost:8000/v1/recipe/' + id)
+  }
 }
