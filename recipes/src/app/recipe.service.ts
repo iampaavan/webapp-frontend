@@ -16,4 +16,8 @@ export class RecipeService {
   getRecipeById(id):Observable<any>{
     return this.http.get('http://localhost:8000/v1/recipe/' + id)
   }
+
+  getRandomRecipe():Observable<any>{
+    return this.http.get('http://localhost:8000/v1/get/random/recipe')
+  }
 }

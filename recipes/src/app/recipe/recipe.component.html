@@ -13,7 +13,7 @@ Newest Recipe
   </div>
 </div>
 </div>
-<table class="table table-bordered table text-center">
+<table class="table table-bordered table text-center" align="center" *ngIf="present == true">
   <thead>
     <tr>
       <th scope="col">Recipe</th>
@@ -69,5 +69,13 @@ Newest Recipe
       <th scope="row">{{recipe.total_time_in_min}}</th>
     </tr>
   </tbody>
+  <div align="right">
+  <button type="button" class="btn btn-primary btn-lg" style="display: block" (click)="getRandomRecipe()">
+    Next
+  </button>
+  </div>
 </table>
+
+
+<h1 *ngIf="error == true " class="text-center"> NO RECIPE FOUND</h1>
 

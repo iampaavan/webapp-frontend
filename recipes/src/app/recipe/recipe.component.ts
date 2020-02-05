@@ -15,6 +15,8 @@ export class RecipeComponent implements OnInit {
   recipe = {};
   ingredients = [];
   steps = []
+  present = false
+  error = false
 
   constructor(private service: RecipeService) {
 
@@ -26,11 +28,17 @@ export class RecipeComponent implements OnInit {
 
   getRecipe(){
     this.service.getRecipe().subscribe(res => {
+      this.present = true
+      this.error = false
       this.recipe = res;
       this.ingredients = this.recipe['ingredients']
       this.steps = this.recipe['steps']
       console.log(this.recipe)
-    })
+    },
+      error1 => {
+      this.present = false
+      this.error = true
+      })
   }
 
   onclickbutton(){
@@ -41,11 +49,31 @@ export class RecipeComponent implements OnInit {
   getRecipeById(){
     var id = (<HTMLInputElement>document.getElementById('id')).value
     this.service.getRecipeById(id).subscribe(res => {
+      this.present = true
+      this.error = false
       this.recipe = res
       this.ingredients = this.recipe['ingredients']
       this.steps = this.recipe['steps']
-    })
+    },
+      error1 => {
+      this.present = false
+      this.error = true
+      })
     document.getElementById('recipeid').className='hide'
+  }
+
+  getRandomRecipe(){
+    this.service.getRandomRecipe().subscribe(res => {
+      this.present = true
+      this.error = false
+      this.recipe = res
+      this.ingredients = this.recipe['ingredients']
+      this.steps = this.recipe['steps']
+    },
+      error1 => {
+      this.present = false
+      this.error = true
+      })
   }
 
 }
