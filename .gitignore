@@ -53,6 +53,7 @@ Thumbs.db
 /recipes/tsconfig.json
 /recipes/tsconfig.app.json
 /recipes/e2e
+/recipes/package-lock.json
 /recipes/node_modules
 
 
