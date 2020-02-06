@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: ng serve -host 0.0.0.0
+    command: bash -c "cd recipes && ng serve --host 0.0.0.0"
     volumes:
     - '.:/app'
     ports:
