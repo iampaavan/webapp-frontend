@@ -45,5 +45,15 @@ testem.log
 .DS_Store
 Thumbs.db
 
+#/recipes/.editorconfig
+#/recipes/browserslist
+#/recipes/karma.conf.js
+#/recipes/tslint.json
+#/recipes/tsconfig.spec.json
+#/recipes/tsconfig.json
+#/recipes/tsconfig.app.json
+#/recipes/e2e
+#/recipes/package-lock.json
+#/recipes/node_modules
 
 
