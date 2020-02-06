@@ -55,4 +55,5 @@ tslint.json
 tsconfig.spec.json
 tsconfig.json
 tsconfig.app.json
-../.idea
+../.idea/
+.idea
