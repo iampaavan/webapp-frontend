@@ -46,11 +46,8 @@ testem.log
 Thumbs.db
 
 /recipes/.editorconfig
-/recipes/angular.json
 /recipes/browserslist
 /recipes/karma.conf.js
-/recipes/package.json
-/recipes/package-lock.json
 /recipes/tslint.json
 /recipes/tsconfig.spec.json
 /recipes/tsconfig.json
