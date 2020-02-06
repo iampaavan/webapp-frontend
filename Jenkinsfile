@@ -1,4 +1,4 @@
-node("docker") {
+{
     docker.withRegistry('csye-7374-advanced-cloud-webapp-frontend', 'dockerhub') {
 
         git url: "https://github.com/CSYE-7374-Advanced-Cloud-Computing/webapp-frontend.git", credentialsId: 'github'
