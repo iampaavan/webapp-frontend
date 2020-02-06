@@ -52,5 +52,7 @@ Thumbs.db
 /recipes/tsconfig.spec.json
 /recipes/tsconfig.json
 /recipes/tsconfig.app.json
+/recipes/e2e
+/recipes/node_modules
 
 
