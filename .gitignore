@@ -47,7 +47,7 @@ Thumbs.db
 
 /recipes/.editorconfig
 /recipes/angular.json
-recipes/browserslist
+/recipes/browserslist
 /recipes/karma.conf.js
 /recipes/package.json
 /recipes/package-lock.json
