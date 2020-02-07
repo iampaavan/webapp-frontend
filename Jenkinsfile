@@ -1,20 +1,26 @@
 pipeline {
   environment {
-    registry = "hemalgadhiya/csye-7374-advanced-cloud-webapp-frontend"
+    registry = credentials("frontend_registry")
     registryCredential = 'dockerhub'
     dockerImage = ''
+    GIT_COMMIT = """${sh(
+                    returnStdout: true,
+                    script: 'git rev-parse HEAD'
+                ).trim()}"""
   }
   agent any
   stages {
-    stage('Git Creds') {
-    steps {
-            git([url: 'https://github.com/CSYE-7374-Advanced-Cloud-Computing/webapp-frontend.git', branch: 'assignment4', credentialsId: 'github'])
-           }
-    }
+    stage('Git Checkout')
+     			{
+     		   steps
+     		   		{
+     						checkout scm
+     					}
+     		}
     stage('Build Image'){
         steps{
             script{
-               dockerImage = docker.build registry + ":$BUILD_NUMBER"
+               dockerImage = docker.build("${registry}:${GIT_COMMIT}")
             }
         }
     }
