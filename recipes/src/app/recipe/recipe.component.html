@@ -1,0 +1,81 @@
+<div class="text-center">
+<button type="button" class="btn btn-primary btn-lg" (click)="getRecipe()">
+Newest Recipe
+</button>
+<input type="button" class="btn btn-primary btn-lg" name="name" value="Get recipe by ID" (click)="onclickbutton()">
+<div  class="hide" id="recipeid">
+  <div class="container">
+  <label style="margin: 10px">Recipe Id</label>
+  <input id="id" placeholder="Recipe ID">
+    <button type="button" class="btn btn-primary btn-sm" (click)="getRecipeById()">
+      Submit
+    </button>
+  </div>
+</div>
+</div>
+<table class="table table-bordered table text-center" align="center" *ngIf="present == true">
+  <thead>
+    <tr>
+      <th scope="col">Recipe</th>
+      <th scope="col">Cuisine</th>
+      <th scope="col">Serving</th>
+      <th class="column" scope="col">Ingredients</th>
+      <th class="column" scope="col">Steps</th>
+      <th scope="col">Nutrition Information</th>
+      <th scope="col">Total Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr valign="middle">
+      <th scope="row">{{recipe.title}}</th>
+      <th scope="row">{{recipe.cuisine}}</th>
+      <th scope="row">{{recipe.servings}}</th>
+      <th scope="row">
+        <ul class="list-group" *ngFor="let item of ingredients">
+          <li class="list-group-item">{{item}}</li>
+        </ul>
+      </th>
+      <th scope="row">
+        <ol class="list-group" *ngFor="let item of steps">
+          <li class="list-group-item">{{item.position}}).  {{item.items}}</li>
+        </ol>
+      </th>
+      <th>
+        <table class="table table-bordered">
+          <tbody>
+          <tr>
+            <td>calories</td>
+            <td>{{recipe.nutrition_information['calories']}}</td>
+          </tr>
+          <tr>
+            <td>cholesterol(mg)</td>
+            <td>{{recipe.nutrition_information['cholesterol_in_mg']}}</td>
+          </tr>
+          <tr>
+            <td>sodium(mg)</td>
+            <td>{{recipe.nutrition_information['sodium_in_mg']}}</td>
+          </tr>
+          <tr>
+            <td>carbohydrates(grams)</td>
+            <td>{{recipe.nutrition_information['carbohydrates_in_grams']}}</td>
+          </tr>
+          <tr>
+            <td>protein(grams)</td>
+            <td>{{recipe.nutrition_information['protein_in_grams']}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </th>
+      <th scope="row">{{recipe.total_time_in_min}}</th>
+    </tr>
+  </tbody>
+  <div align="right">
+  <button type="button" class="btn btn-primary btn-lg" style="display: block" (click)="getRandomRecipe()">
+    Next
+  </button>
+  </div>
+</table>
+
+
+<h1 *ngIf="error == true " class="text-center"> NO RECIPE FOUND</h1>
+

@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  web-frontend:
+    container_name: frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: webapp-fronten
+    command: bash -c "cd recipes && ng serve --host 0.0.0.0"
+    volumes:
+    - '.:/app'
+    ports:
+    - 4200:4200
+
