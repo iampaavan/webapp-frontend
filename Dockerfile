@@ -1,6 +1,7 @@
 FROM node:12.14.1
 WORKDIR /app
 COPY ./recipes/package.json /app/package.json
+COPY ./recipes/package-lock.json /app/package-lock.json
 RUN npm install
 RUN npm install -g @angular/cli
 
