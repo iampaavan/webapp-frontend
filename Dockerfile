@@ -4,7 +4,6 @@ COPY ./recipes/package.json /app/package.json
 COPY ./recipes/package-lock.json /app/package-lock.json
 RUN npm install
 RUN npm install -g @angular/cli
-
 COPY ./recipes /app
 
 #EXPOSE 4200
