@@ -47,3 +47,4 @@ Thumbs.db
 
 ./recipes/node_modules/
 recipes/node_modules/
+recipes/dist/

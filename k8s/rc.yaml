@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: frontend
+  namespace: ui
+  labels:
+    app: recipe
+
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector:
+    matchLabels:
+      app: angular-frontend
+  template:
+    metadata:
+      labels:
+        app: angular-frontend
+    spec:
+      containers:
+        - name: angular-server
+          image: hemalgadhiya/csye-7374-advanced-cloud-webapp-frontend:3cebbd75b790268f95884465977ee2817713ea2c
+          ports:
+            - containerPort: 4200
+          imagePullPolicy: IfNotPresent
+          command: ["/bin/sh"]
+#          args: ["-c", "while true; do echo hello; sleep 10;done"]
+          args: ["-C", "ng serve"]
+      imagePullSecrets:
+        - name: regcred

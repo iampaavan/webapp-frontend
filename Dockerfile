@@ -5,6 +5,9 @@ COPY ./recipes/package-lock.json /app/package-lock.json
 RUN npm install
 RUN npm install -g @angular/cli
 COPY ./recipes /app
+RUN npm run build --output-path=./dist/out
 
-#EXPOSE 4200
-#CMD ng serve --host 0.0.0.0
+FROM nginx:1.17
+COPY /app/dist/out/ /usr/share/nginx/html
+COPY ./recipes/nginx-custom.conf /etc/nginx/conf.d/default.conf
+
