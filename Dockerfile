@@ -3,7 +3,7 @@ WORKDIR /app
 COPY ./recipes/package.json /app/package.json
 COPY ./recipes/package-lock.json /app/package-lock.json
 RUN npm install
-RUN npm install -g @angular/cli
+#RUN npm install -g @angular/cli
 COPY ./recipes /app
 RUN npm run build -- --output-path=./dist/out
 
