@@ -5,7 +5,7 @@ COPY ./recipes/package-lock.json /app/package-lock.json
 RUN npm install
 RUN npm install -g @angular/cli
 COPY ./recipes /app
-RUN ng build --output-path=./dist/out
+RUN npm run build -- --output-path=./dist/out
 
 #stage 2
 FROM nginx:1.17
