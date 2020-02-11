@@ -11,4 +11,3 @@ RUN npm run build -- --output-path=./dist/out
 FROM nginx:1.17
 COPY --from=build-stage /app/dist/out/ /usr/share/nginx/html
 COPY ./recipes/nginx-custom.conf /etc/nginx/conf.d/default.conf
-
