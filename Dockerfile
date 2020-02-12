@@ -1,14 +1,12 @@
 # FROM node:12.14.1 as build-stage
 
-FROM alpine:3.9
-
-ENV NODE_VERSION 12.15.0
+FROM node:10
 
 WORKDIR /app
 COPY ./recipes/package.json /app/
 COPY ./recipes/package-lock.json /app/
 RUN whoami
-RUN npm install --unsafe-perm
+RUN npm install
 #RUN npm install -g @angular/cli
 COPY ./recipes /app
 RUN npm run build -- --output-path=./dist/out
