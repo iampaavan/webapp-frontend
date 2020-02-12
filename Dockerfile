@@ -7,7 +7,6 @@ RUN npm install -g @angular/cli
 COPY ./recipes /app
 RUN npm run build -- --output-path=./dist/out
 
-
 #stage 2
 FROM nginx:1.15
 RUN rm -rf /usr/share/nginx/html/*
