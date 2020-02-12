@@ -1,4 +1,4 @@
-FROM node:12.14.1 as build-stage
+FROM node:12 as build-stage
 WORKDIR /app
 COPY ./recipes/package.json /app/
 COPY ./recipes/package-lock.json /app/
