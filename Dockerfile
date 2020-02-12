@@ -6,7 +6,7 @@ RUN npm install
 RUN npm install -g @angular/cli
 COPY ./recipes /app
 #RUN $(npm bin)/ng build --output-path=dist/out
-RUN ng build --output-path=dist/out
+RUN npm run ng build
 
 #stage 2
 FROM nginx:1.15
