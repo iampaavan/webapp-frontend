@@ -1,6 +1,5 @@
 FROM node:12.14.1
 
-
 WORKDIR /app
 COPY ./recipes/package.json /app/
 COPY ./recipes/package-lock.json /app/
