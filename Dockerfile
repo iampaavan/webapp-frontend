@@ -1,4 +1,9 @@
-FROM node:12.14.1 as build-stage
+# FROM node:12.14.1 as build-stage
+
+FROM alpine:3.9
+
+ENV NODE_VERSION 12.15.0
+
 WORKDIR /app
 COPY ./recipes/package.json /app/
 COPY ./recipes/package-lock.json /app/
