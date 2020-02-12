@@ -2,6 +2,8 @@ FROM node:12.14.1 as build-stage
 WORKDIR /app
 COPY ./recipes/package.json /app/
 COPY ./recipes/package-lock.json /app/
+RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
+RUN sudo apt-get install -y nodejs
 RUN npm install
 #RUN npm install -g @angular/cli
 COPY ./recipes /app
