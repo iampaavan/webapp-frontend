@@ -1,8 +1,8 @@
 FROM node:12.14.1 as build-stage
 WORKDIR /app
-COPY ./recipes/package.json /app/
+COPY ./recipes/package.json /app/ RUN npm install --dev && npm cache clean
 COPY ./recipes/package-lock.json /app/
-RUN npm install
+# RUN npm install
 RUN npm install -g @angular/cli
 COPY ./recipes /app
 RUN $(npm bin)/ng build --output-path=dist/out
