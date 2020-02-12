@@ -2,7 +2,7 @@ FROM node:12.14.1 as build-stage
 WORKDIR /app
 COPY ./recipes/package.json /app/
 COPY ./recipes/package-lock.json /app/
-# RUN /usr/local/bin/npm install
+RUN whoami
 RUN npm install
 #RUN npm install -g @angular/cli
 COPY ./recipes /app
