@@ -5,7 +5,8 @@ WORKDIR /app
 COPY ./recipes/package.json /app/
 COPY ./recipes/package-lock.json /app/
 RUN whoami
-RUN npm install
+#RUN npm install
+RUN npm install --save-dev carrot/share-button
 RUN npm install -g @angular/cli
 COPY ./recipes /app
 
