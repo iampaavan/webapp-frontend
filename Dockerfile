@@ -3,8 +3,6 @@ WORKDIR /app
 COPY ./recipes/package.json /app/
 COPY ./recipes/package-lock.json /app/
 # RUN /usr/local/bin/npm install
-ENV npm_config_cache=npm-cache
-ENV HOME=.
 RUN npm install
 #RUN npm install -g @angular/cli
 COPY ./recipes /app
