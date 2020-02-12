@@ -19,12 +19,11 @@ spec:
     spec:
       containers:
         - name: angular-server
-          image: hemalgadhiya/csye-7374-advanced-cloud-webapp-frontend:3cebbd75b790268f95884465977ee2817713ea2c
+          image: hemalgadhiya/csye-7374-advanced-cloud-webapp-frontend:29707788d2fc70cd752b0594250e5d2b590c70ea
           ports:
-            - containerPort: 4200
+            - containerPort: 80
           imagePullPolicy: IfNotPresent
           command: ["/bin/sh"]
-#          args: ["-c", "while true; do echo hello; sleep 10;done"]
-          args: ["-C", "ng serve"]
+          args: ["-c", "while true; do echo hello; sleep 10;done"]
       imagePullSecrets:
         - name: regcred
