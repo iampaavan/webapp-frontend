@@ -3,7 +3,7 @@ WORKDIR /app
 COPY ./recipes/package.json /app/
 COPY ./recipes/package-lock.json /app/
 RUN curl -sL https://deb.nodesource.com/setup
-RUN sudo apt-get install -y nodejs
+RUN apt-get install -y nodejs
 RUN npm install
 #RUN npm install -g @angular/cli
 COPY ./recipes /app
