@@ -19,9 +19,22 @@ spec:
     spec:
       containers:
         - name: angular-server
-          image: hemalgadhiya/csye-7374-advanced-cloud-webapp-frontend:93b181c3db7a51c9d899896c8660a5ee18d0ff8f
+          image: iampaavan/csye-7374-advanced-cloud-webapp-frontend:81750055651bbe6db78ac1828abd43144f08213e
           ports:
-            - containerPort: 2000
+            - name: liveness-port
+              containerPort: 2000
+              hostPort: 2000
+          readinessProbe:
+            tcpSocket:
+              port: 2000
+            initialDelaySeconds: 80
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: liveness-port
+            initialDelaySeconds: 80
+            periodSeconds: 3
           imagePullPolicy: IfNotPresent
       imagePullSecrets:
         - name: regcred

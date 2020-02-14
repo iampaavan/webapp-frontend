@@ -4,11 +4,13 @@ metadata:
   name: ui
   namespace: ui
 spec:
-  selector:
-    app: angular-frontend
+  type: LoadBalancer
   ports:
-    - protocol: TCP
+    - name: http
+      protocol: TCP
       port: 2000
       targetPort: 2000
-  type: LoadBalancer
+  selector:
+    app: angular-frontend
+
   
