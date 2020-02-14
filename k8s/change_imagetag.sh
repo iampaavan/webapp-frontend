@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 read -p "Enter Your Username: "  username
