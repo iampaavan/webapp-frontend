@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: angular-server
-          image: iampaavan/csye-7374-advanced-cloud-webapp-frontend:81750055651bbe6db78ac1828abd43144f08213e
+          image: hemalgadhiya/csye-7374-advanced-cloud-webapp-frontend:52cb21e20c641c604da213c1bdc366777894f02a
           ports:
             - name: liveness-port
               containerPort: 2000
@@ -38,3 +38,7 @@ spec:
           imagePullPolicy: IfNotPresent
       imagePullSecrets:
         - name: regcred
+      initContainers:
+        - name: init-backend
+          image: busybox:1.28
+          command: ['sh', '-c', 'until nslookup django-backend-app.api; do echo waiting for myservice; sleep 2; done;']
