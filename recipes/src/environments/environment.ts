@@ -4,11 +4,8 @@
 
 export const environment = {
   production: false,
-<<<<<<< HEAD
-  // apiurl: 'http://ada47fe00c0834bddb7a2568e8fbb364-824428731.us-east-1.elb.amazonaws.com'
-=======
   apiurl: 'http://a1902cabc4ee04404a2ecee5709b2704-1298486845.us-east-1.elb.amazonaws.com'
->>>>>>> 3db6983909f0f1681468f8f574f375f03ec2d7a2
+
 };
 
 /*
