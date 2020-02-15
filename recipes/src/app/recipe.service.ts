@@ -8,8 +8,8 @@ import { environment} from "../environments/environment";
 })
 export class RecipeService {
 
-  url = environment.apiurl
-  
+  url = process.env.API_URL
+
   constructor(private http: HttpClient) { }
 
   getRecipe():Observable<any>{
