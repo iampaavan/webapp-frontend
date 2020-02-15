@@ -1,6 +1,7 @@
 FROM node:12.14.1 as build-stage
 WORKDIR /app
 ENV API_URL=a12e42b65d33f4f64a087a5b927f459b-1417043443.us-east-1.elb.amazonaws.com
+
 COPY ./recipes/package.json /app/
 COPY ./recipes/package-lock.json /app/
 RUN npm install
