@@ -8,7 +8,7 @@ import { environment} from "../environments/environment";
 })
 export class RecipeService {
 
-  url = process.env.API_URL
+  url = `http://${process.env.API_URL}`
 
   constructor(private http: HttpClient) { }
 
