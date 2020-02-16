@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: frontend
+  namespace: ui
+  labels:
+    app: recipe
+
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector:
+    matchLabels:
+      app: angular-frontend
+  template:
+    metadata:
+      labels:
+        app: angular-frontend
+    spec:
+      containers:
+        - name: angular-server
+          image: username/docker:81750055651bbe6db78ac1828abd43144f08213e
+          ports:
+            - name: liveness-port
+              containerPort: 2000
+              hostPort: 2000
+          readinessProbe:
+            tcpSocket:
+              port: 2000
+            initialDelaySeconds: 80
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: liveness-port
+            initialDelaySeconds: 80
+            periodSeconds: 3
+          imagePullPolicy: IfNotPresent
+      imagePullSecrets:
+        - name: regcred
+      initContainers:
+        - name: init-backend
+          image: busybox:1.28
+          command: ['sh', '-c', 'until nslookup django-backend-app.api; do echo waiting for myservice; sleep 2; done;']

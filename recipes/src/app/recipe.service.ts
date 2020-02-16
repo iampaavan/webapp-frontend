@@ -1,23 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment} from "../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
 
+  url = `http://${process.env.API_URL}`
+
   constructor(private http: HttpClient) { }
 
   getRecipe():Observable<any>{
-    return this.http.get('http://localhost:8000/v1/recipes')
+    return this.http.get(this.url + '/v1/recipes')
   }
 
   getRecipeById(id):Observable<any>{
-    return this.http.get('http://localhost:8000/v1/recipe/' + id)
+    return this.http.get(this.url+ '/v1/recipe/' + id)
   }
 
   getRandomRecipe():Observable<any>{
-    return this.http.get('http://localhost:8000/v1/get/random/recipe')
+    return this.http.get(this.url + '/v1/get/random/recipe')
   }
 }

@@ -3,6 +3,7 @@ pipeline {
     registry = credentials("frontend_registry")
     registryCredential = 'dockerhub'
     dockerImage = ''
+    HOME = '.'
     GIT_COMMIT = """${sh(
                     returnStdout: true,
                     script: 'git rev-parse HEAD'
