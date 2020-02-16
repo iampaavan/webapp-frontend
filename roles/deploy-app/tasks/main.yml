@@ -1,0 +1,21 @@
+---
+# tasks file for deploy-app
+
+- name: run shell scrip
+  script: ~/csye7374/webapp-frontend/k8s/change_imagetag.sh "{{username}}" "{{image}}"
+
+- name: create namespace
+  shell: "kubectl apply -f ~/csye7374/webapp-frontend/k8s/namespace.yaml"
+
+- name: create secret
+  shell: "kubectl apply -f ~/csye7374/webapp-frontend/k8s/secrets.yaml"
+
+- name: create replica set
+  shell: "kubectl apply -f ~/csye7374/webapp-frontend/k8s/rc.yaml"
+
+- name: sleep for 100 seconds and continue with play
+  wait_for:
+    sleep: 100
+
+- name: create service
+  shell: "kubectl apply -f ~/csye7374/webapp-frontend/k8s/service.yaml"
