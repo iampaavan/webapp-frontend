@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: 'http://a0c3568c8ce7745f7922a79a4968742a-311883898.us-east-1.elb.amazonaws.com'
+  url: 'http://a85dea49dbd8b4f4d91cbc9eddbb9c6f-1342162995.us-east-1.elb.amazonaws.com'
 };
 
 /*
