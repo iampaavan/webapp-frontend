@@ -17,36 +17,36 @@ pipeline
   agent any
   stages
   {
-//     stage('Git Checkout')
-//     {
-//         steps
-//      	{
-//      	    checkout scm
-//      	}
-//     }
-//     stage('Build Image')
-//     {
-//         steps
-//         {
-//             script
-//             {
-//                dockerImage = docker.build("${registry}:${GIT_COMMIT}")
-//             }
-//         }
-//     }
-//     stage('Deploy Image')
-//     {
-//         steps
-//         {
-//             script
-//             {
-//                 docker.withRegistry( '', registryCredential )
-//                 {
-//                     dockerImage.push()
-//                 }
-//             }
-//         }
-//     }
+    stage('Git Checkout')
+    {
+        steps
+     	{
+     	    checkout scm
+     	}
+    }
+    stage('Build Image')
+    {
+        steps
+        {
+            script
+            {
+               dockerImage = docker.build("${registry}:${GIT_COMMIT}")
+            }
+        }
+    }
+    stage('Deploy Image')
+    {
+        steps
+        {
+            script
+            {
+                docker.withRegistry( '', registryCredential )
+                {
+                    dockerImage.push()
+                }
+            }
+        }
+    }
     stage('clone helm chart repo')
     {
         steps
