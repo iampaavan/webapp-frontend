@@ -5,6 +5,8 @@ pipeline
     registry = credentials("frontend_registry")
     registryCredential = 'dockerhub'
     githubCredential = 'github'
+    docker_username = credentials("user_name")
+    docker_password = credentials("password")
     dockerImage = ''
     HOME = '.'
     GIT_COMMIT = """${sh(
@@ -57,7 +59,22 @@ pipeline
                 sh ("pwd")
                 sh ("ls")
                 version = getChartVersion()
-                echo version
+                newVersion = generateNewVersion("patch")
+                echo latestversion
+                echo newVersion
+                sh ("yq r ./frontend/Chart.yaml version")
+                sh ("yq w -i ./frontend/Chart.yaml 'version' ${newVersion}")
+                sh ("yq r ./frontend/Chart.yaml version")
+                sh ("yq r ./frontend/values.yaml 'image.name'")
+                sh ("yq w -i ./frontend/values.yaml 'image.name' '${registry}:${GIT_COMMIT}'")
+                sh ("yq r ./frontend/values.yaml 'image.name'")
+                sh ('git config --global user.email "hemalgadhiya@gmail.com"')
+                sh ('git config --global user.name "Hemal Gadhiya"')
+                sh ("git add --all")
+                sh ('git commit -m "testing jenkins ci/cd"')
+                withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/hemalgadhiya/helm-charts.git jenkins-test')
+                }
             }
         }
     }
@@ -66,4 +83,19 @@ pipeline
 def getChartVersion(){
     def version = sh (returnStdout: true, script: 'yq r ./frontend/Chart.yaml version')
     return version
+}
+
+def generateNewVersion(release){
+    def (major, minor, patch) = getChartVersion().tokenize(".").collect{element -> return element.toInteger()}
+    def newVersion
+    if (release == 'major'){
+        newVersion = "${major + 1}.0.0"
+    }
+    else if (release == 'minor'){
+        newVersion = "${major}.${minor + 1}.0"
+    }
+    else if (release == 'patch'){
+        newVersion = "${major}.${minor}.${patch + 1}"
+    }
+    return newVersion
 }
