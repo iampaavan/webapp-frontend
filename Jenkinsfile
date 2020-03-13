@@ -58,7 +58,7 @@ pipeline
                      url: 'https://github.com/hemalgadhiya/helm-charts.git')
                 sh ("pwd")
                 sh ("ls")
-                version = getChartVersion()
+                latestversion = getChartVersion()
                 newVersion = generateNewVersion("patch")
                 echo latestversion
                 echo newVersion
