@@ -12,7 +12,7 @@ import { RecipeService } from '../recipe.service';
 })
 export class RecipeComponent implements OnInit {
 
-  recipe = {};
+  recipe: object;
   ingredients = [];
   steps = []
   present = false
