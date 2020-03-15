@@ -9,7 +9,7 @@ COPY ./recipes /app
 
 #EXPOSE 4200
 #CMD ng serve --host 0.0.0.0
-RUN npm run build -- --output-path=./dist/out --configuration=production
+RUN npm run build -- --output-path=./dist/out
 
 #stage 2
 FROM nginx:1.15
