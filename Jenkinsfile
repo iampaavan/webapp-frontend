@@ -5,8 +5,6 @@ pipeline
     registry = credentials("frontend_registry")
     registryCredential = 'dockerhub'
     githubCredential = 'github'
-    docker_username = credentials("user_name")
-    docker_password = credentials("password")
     dockerImage = ''
     HOME = '.'
     GIT_COMMIT = """${sh(
@@ -47,7 +45,7 @@ pipeline
             }
         }
     }
-    stage('clone helm chart repo')
+    stage('Clone Helm Chart Repo')
     {
         steps
         {
@@ -55,7 +53,7 @@ pipeline
             {
                 git (branch: 'jenkins-test',
                 	 credentialsId: githubCredential,
-                     url: 'https://github.com/hemalgadhiya/helm-charts.git')
+                     url: 'https://github.com/iampaavan/helm-charts.git')
                 sh ("pwd")
                 sh ("ls")
                 latestversion = getChartVersion()
@@ -68,12 +66,12 @@ pipeline
                 sh ("yq r ./frontend/values.yaml 'image.name'")
                 sh ("yq w -i ./frontend/values.yaml 'image.name' '${registry}:${GIT_COMMIT}'")
                 sh ("yq r ./frontend/values.yaml 'image.name'")
-                sh ('git config --global user.email "hemalgadhiya@gmail.com"')
-                sh ('git config --global user.name "Hemal Gadhiya"')
+                sh ('git config --global user.email "gopalareddy.p@neu.edu"')
+                sh ('git config --global user.name "iampaavan"')
                 sh ("git add --all")
                 sh ('git commit -m "testing jenkins ci/cd"')
                 withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/hemalgadhiya/helm-charts.git jenkins-test')
+                sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/iampaavan/helm-charts.git jenkins-test')
                 }
             }
         }
