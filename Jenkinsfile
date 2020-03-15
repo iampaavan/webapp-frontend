@@ -45,7 +45,7 @@ pipeline
             }
         }
     }
-    stage('clone helm chart repo')
+    stage('Clone Helm Chart Repo')
     {
         steps
         {
