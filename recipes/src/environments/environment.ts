@@ -4,7 +4,7 @@
 
 export const environment = {
 production: false,
-url: 'http://backend.paavangopala.me.'
+url: 'http://ad987dc8493f2444eb7ef807e2ed7301-1163386923.us-east-1.elb.amazonaws.com'
 };
 
 /*
