@@ -69,7 +69,7 @@ pipeline
                 sh ('git config --global user.email "gopalareddy.p@neu.edu"')
                 sh ('git config --global user.name "iampaavan"')
                 sh ("git add --all")
-                sh ('git commit -m "test backend url"')
+                sh ('git commit -m "testing backend url"')
                 withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                 sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/iampaavan/helm-charts.git assignment9')
                 }
